@@ -56,14 +56,16 @@
 .bodyListContainer{
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 10px;
+  gap: 1rem;
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,8rem),1fr));
 }
 .bodyContainer{
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4,1fr);
   gap: 10px;
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fit,minmax(min(100%,8rem),1fr));
 }
 .delete{
   background-color: rgba(196, 4, 42, 0.856);
@@ -83,7 +85,7 @@
 
 
 /* media querys */
-@media (max-width:1100px){
+/* @media (max-width:1100px){
   .bodyContainer{
     grid-template-columns: repeat(3,1fr);
   }
@@ -133,5 +135,16 @@
   .bodyListContainer{
     width: 100%;
     grid-template-columns: 1fr;
+  }
+} */
+@media (max-width:550px){
+  .container{
+    flex-direction: column;
+  }
+  .allBooks{
+    width: 100%;
+  }
+  .listContainer{
+    width: 100%;
   }
 }
