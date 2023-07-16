@@ -5,11 +5,23 @@
   color: whitesmoke;
 }
 .navbar{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  align-items:center;
+  justify-content:end;
+  gap: 10px;
   background-color: #1a1f1e;
-  color: whitesmoke;
   min-height: 10vh;
 }
+.search{
+  border-radius: 10px;
+  border: none;
+  height: 20px;
+  padding-left: 10px;
+}
 .allBooks{
+  text-align: center;
   gap: 10px;
   padding: 20px;
   width: 65%;
@@ -17,6 +29,7 @@
   /* border: 1px solid red; */
 }
 .listContainer{
+  text-align: center;
   padding: 20px;
   width: 35%;
   background-color: #333131;

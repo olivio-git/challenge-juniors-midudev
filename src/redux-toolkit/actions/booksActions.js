@@ -29,7 +29,6 @@ export const getBooks = createAsyncThunk('/getBooks', async ()=> {
 });
 export const booksReading = createAsyncThunk('/booksReading', async (tit)=> {
     try {
-        console.log(tit)
         if(tit){
             return tit;
         }
@@ -40,7 +39,6 @@ export const booksReading = createAsyncThunk('/booksReading', async (tit)=> {
 });
 export const booksNotReading = createAsyncThunk('/booksNotReading', async (tit)=> {
     try {
-        console.log(tit)
         if(tit){
             return tit;
         }

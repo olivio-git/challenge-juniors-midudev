@@ -1,7 +1,10 @@
 const NavBar = () => {
     return ( 
         <div className="navbar">
-            Navbar
+            <select name="" id="">
+                <option value="a">Todas</option>
+            </select>
+            <input type="search" className="search" placeholder="Search" />
         </div>
      );
 }
