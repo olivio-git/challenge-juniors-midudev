@@ -82,61 +82,6 @@
 .delete:hover{
   background-color: rgb(194, 57, 85);
 }
-
-
-/* media querys */
-/* @media (max-width:1100px){
-  .bodyContainer{
-    grid-template-columns: repeat(3,1fr);
-  }
-}
-@media (max-width:750px){
-  .bodyContainer{
-    grid-template-columns: repeat(2,1fr);
-  }
-  .bodyListContainer{
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width:550px){
-  .container{
-    flex-direction: column;
-  }
-  .allBooks{
-    width: 100%;
-  }
-  .listContainer{
-    width: 100%;
-  }
-  .bodyContainer{
-    width: 100%;
-    grid-template-columns: repeat(3,1fr);
-  }
-  .bodyListContainer{
-    width: 100%;
-    grid-template-columns: repeat(3,1fr)
-  }
-}
-@media (max-width:400px){
-  .bodyContainer{
-    width: 100%;
-    grid-template-columns: repeat(2,1fr);
-  }
-  .bodyListContainer{
-    width: 100%;
-    grid-template-columns: repeat(2,1fr)
-  }
-}
-@media (max-width:300px){
-  .bodyContainer{
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-  .bodyListContainer{
-    width: 100%;
-    grid-template-columns: 1fr;
-  }
-} */
 @media (max-width:550px){
   .container{
     flex-direction: column;
