@@ -4,11 +4,14 @@ import books from '../../../books.json';
 export const booksCharge = createAsyncThunk('/booksCharge', async ()=> {
     try {
         const dataAllBooks=JSON.parse(localStorage.getItem("allBooks"));
-        
-        if(!dataAllBooks){ //si está vacio cargaremos los datos a localstorage
+        //verificamos si el localstorage empieza vacío, de ser asi cargamos todos los datos
+        if(!dataAllBooks){ 
             localStorage.setItem("allBooks",JSON.stringify(books.library));
+            const genres=books.library.map(item=>item.book.genre);
+            const filterUniquesGenres=Array.from(new Set(genres));
+            localStorage.setItem("genres",(filterUniquesGenres));
             return books;
-        }//en caso de ya haya datos hacemos la insersion en nuestro estado global
+        }
     } catch (error) {
         return error.message;
     }
@@ -17,10 +20,12 @@ export const getBooks = createAsyncThunk('/getBooks', async ()=> {
     try {
         const dataLocalstorage=JSON.parse(localStorage.getItem("allBooks"));
         const dataReadingBooks=JSON.parse(localStorage.getItem("readingBooks"));
+        const dataGenres=localStorage.getItem("genres");
         if(dataLocalstorage){
             return {
                 all:dataLocalstorage,
-                reading:dataReadingBooks
+                reading:dataReadingBooks,
+                genres:dataGenres.split(",")
             };
         } 
     } catch (error) {
@@ -47,3 +52,12 @@ export const booksNotReading = createAsyncThunk('/booksNotReading', async (tit)=
         return error.message;
     }
 });
+export const searchAll=createAsyncThunk('/searchAll',async(search)=>{
+    try {
+        if(search){
+            return search;
+        }
+    } catch (error) {
+        return error.message;
+    }
+})

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { booksCharge,getBooks,booksReading, booksNotReading } from "../actions/booksActions";
+import { booksCharge,getBooks,booksReading, booksNotReading, searchAll } from "../actions/booksActions";
 
 const initialState = {
   library: [],
@@ -27,6 +27,7 @@ const sliceBooks = createSlice({
     builder.addCase(getBooks.fulfilled, (state, action) => {
         state.library=action.payload.all;
         action.payload.reading?state.readingList=action.payload.reading:state.readingList=[];
+        state.genres=action.payload.genres;
         state.status = "success";
     });
     builder.addCase(getBooks.rejected, (state, action) => {
@@ -85,6 +86,30 @@ const sliceBooks = createSlice({
       state.status = "success";
     });
     builder.addCase(booksNotReading.rejected, (state, action) => {
+        state.status = "rejected";
+    });
+
+
+    builder.addCase(searchAll.pending, (state, action) => {
+      state.status = "pending";
+    });
+    builder.addCase(searchAll.fulfilled, (state, action) => {
+        if(action.payload.filter==="allBooks"){
+          const searchTerm = action.payload.search.toLowerCase();
+          const filteredBooks=state.library.filter(
+            item=>item.book.title.toLowerCase().includes(searchTerm)
+          )
+          state.library=filteredBooks;
+        }else{
+          const searchTerm = action.payload.search.toLowerCase();
+          const filteredBooks=state.readingList.filter(
+            item=>item.book.title.toLowerCase().includes(searchTerm)
+          )
+          state.readingList=filteredBooks;
+        }
+        state.status = "success";
+    });
+    builder.addCase(searchAll.rejected, (state, action) => {
         state.status = "rejected";
     });
   },

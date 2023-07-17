@@ -8,24 +8,32 @@ const BodyContainer = () => {
   return (
     <div className="allBooks">
       <h1 style={{fontFamily:"sans-serif",fontSize:"20px"}} >Library</h1>
-      <div className="bodyContainer">
-      {librarys.map((l) => {
-        return (
-          <CardBook
-            key={l.book.ISBN}
-            title={l.book.title}
-            isbn={l.book.ISBN}
-            pages={l.book.pages}
-            genre={l.book.genre}
-            cover={l.book.cover}
-            synopsis={l.book.synopsis}
-            year={l.book.year}
-            author={l.book.author}
-            reading={false}
-          ></CardBook>
-        );
-      })}
-    </div>
+      {
+        librarys.length<1?
+        (
+        <p>"No se encontraron libros!"</p>
+        )
+        :(
+          <div className="bodyContainer">{
+          librarys.map((l) => {
+            return (
+              <CardBook
+                key={l.book.ISBN}
+                title={l.book.title}
+                isbn={l.book.ISBN}
+                pages={l.book.pages}
+                genre={l.book.genre}
+                cover={l.book.cover}
+                synopsis={l.book.synopsis}
+                year={l.book.year}
+                author={l.book.author}
+                reading={false}
+              ></CardBook>
+            );
+          })}
+        </div>
+        )
+      }
     </div>
 
   );
