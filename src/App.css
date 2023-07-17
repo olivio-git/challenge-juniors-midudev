@@ -14,6 +14,10 @@
   background-color: #1a1f1e;
   min-height: 10vh;
   color: whitesmoke;
+  font-family: sans-serif;
+}
+.selectFocus{
+  outline: none;
 }
 .search{
   border-radius: 10px;
@@ -65,14 +69,14 @@
   display: grid;
   gap: 1rem;
   grid-auto-rows: 20rem;
-  grid-template-columns: repeat(auto-fill,minmax(min(100%,8rem),1fr));
+  grid-template-columns: repeat(auto-fill,minmax(min(100%,10rem),1fr));
 }
 .bodyContainer{
   width: 100%;
   display: grid;
   gap: 10px;
   grid-auto-rows: 20rem;
-  grid-template-columns: repeat(auto-fill,minmax(min(100%,8rem),1fr));
+  grid-template-columns: repeat(auto-fill,minmax(min(100%,10rem),1fr));
 }
 .delete{
   background-color: rgba(196, 4, 42, 0.856);
@@ -99,4 +103,11 @@
   .listContainer{
     width: 100%;
   }
+  .navbar{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(min(100%,8rem),1fr));
+    gap: 1rem;
+  }
 }
+
+ 

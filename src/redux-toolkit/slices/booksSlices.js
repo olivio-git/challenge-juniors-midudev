@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { booksCharge,getBooks,booksReading, booksNotReading, searchAll } from "../actions/booksActions";
+import { getBooksLibrary, getBooksReading } from "../../services/getData";
 
 const initialState = {
   library: [],
@@ -41,8 +42,8 @@ const sliceBooks = createSlice({
       if(action.payload){
         const obj=state.library.find(f=>f.book.title===action.payload);
         state.readingList=state.readingList.concat(obj);
-        let dataReading=JSON.parse(localStorage.getItem("readingBooks"));
-        let dataAllBooks=JSON.parse(localStorage.getItem("allBooks"));
+        let dataAllBooks=getBooksLibrary();
+        let dataReading=getBooksReading();
         if(!dataReading){
           dataReading=[];
         }
@@ -68,9 +69,8 @@ const sliceBooks = createSlice({
       if(action.payload){
         const obj=state.readingList.find(f=>f.book.title===action.payload);
         state.library=state.library.concat(obj);
-
-        let dataReading=JSON.parse(localStorage.getItem("readingBooks"));
-        let dataAllBooks=JSON.parse(localStorage.getItem("allBooks"));
+        let dataAllBooks=getBooksLibrary();
+        let dataReading=getBooksReading();        
         if(!dataReading){
           dataReading=[];
         }
@@ -94,20 +94,12 @@ const sliceBooks = createSlice({
       state.status = "pending";
     });
     builder.addCase(searchAll.fulfilled, (state, action) => {
-        if(action.payload.filter==="allBooks"){
-          const searchTerm = action.payload.search.toLowerCase();
-          const filteredBooks=state.library.filter(
-            item=>item.book.title.toLowerCase().includes(searchTerm)
-          )
-          state.library=filteredBooks;
-        }else{
-          const searchTerm = action.payload.search.toLowerCase();
-          const filteredBooks=state.readingList.filter(
-            item=>item.book.title.toLowerCase().includes(searchTerm)
-          )
-          state.readingList=filteredBooks;
-        }
-        state.status = "success";
+      if(action.payload.filter==="allBooks"){
+        state.library=action.payload.data
+      }else{
+        state.readingList=action.payload.data;
+      }
+      state.status = "success";
     });
     builder.addCase(searchAll.rejected, (state, action) => {
         state.status = "rejected";
