@@ -79,3 +79,29 @@ export const searchAll = createAsyncThunk("/searchAll", async (search) => {
     return error.message;
   }
 });
+export const filterGenre=createAsyncThunk("/filterGenre",(genre)=>{
+  try {
+    if(genre){
+      const dataLocalstorage = getBooksLibrary();
+      if(genre==="all"){
+        return {data:dataLocalstorage}
+      }
+      const filterGenre=dataLocalstorage.filter((item)=>
+      item.book.genre===genre
+      )
+      if(!filterGenre.length<1){
+        return {data:filterGenre}
+      }
+      return {data:dataLocalstorage}
+    }
+  } catch (error) {
+    return error.message;
+  }
+})
+export const reset=createAsyncThunk("/reset",()=>{
+  try {
+    
+  } catch (error) {
+    return error.message;
+  }
+})

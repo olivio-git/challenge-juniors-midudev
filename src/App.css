@@ -4,13 +4,41 @@
   width: 100%;
   color: whitesmoke;
 }
+.btn{
+  width: 70px;
+}
+.btn-primary{
+  color: whitesmoke;
+  font-weight:800;
+  background-color:#383838;
+  border-radius:5px 5px;
+  border: none;
+  height: 30px;
+  transition: transform .3s;
+}
+.btn-primary:hover{
+  cursor: pointer;
+  background-color:#49474777;
+}
+.selectStyles{
+  color: white;
+  width: 115px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #3656AA;
+}
+.selectStyles:hover{
+  cursor: pointer;
+  background-color:#3657aad7;
+}
 .navbar{
   display: flex;
   flex-direction: row;
   padding: 10px;
   align-items:center;
   justify-content:end;
-  gap: 10px;
+  gap: 50px;
   background-color: #1a1f1e;
   min-height: 10vh;
   color: whitesmoke;
@@ -24,6 +52,12 @@
   border: none;
   height: 20px;
   padding-left: 10px;
+}
+.searchBar{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
 }
 .allBooks{
   display: flex;

@@ -7,7 +7,7 @@ const BodyContainer = () => {
   useEffect(() => {}, [librarys]);
   return (
     <div className="allBooks">
-      <h1 style={{fontFamily:"sans-serif",fontSize:"20px"}} >Library</h1>
+      <h1 style={{fontFamily:"sans-serif",fontSize:"20px"}} >Available: {librarys.length}</h1>
       {
         librarys.length<1?
         (

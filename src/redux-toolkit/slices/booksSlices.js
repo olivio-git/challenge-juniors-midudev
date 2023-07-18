@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { booksCharge,getBooks,booksReading, booksNotReading, searchAll } from "../actions/booksActions";
+import { booksCharge,getBooks,booksReading, booksNotReading, searchAll, filterGenre } from "../actions/booksActions";
 import { getBooksLibrary, getBooksReading } from "../../services/getData";
 
 const initialState = {
@@ -102,6 +102,17 @@ const sliceBooks = createSlice({
       state.status = "success";
     });
     builder.addCase(searchAll.rejected, (state, action) => {
+        state.status = "rejected";
+    });
+
+    builder.addCase(filterGenre.pending, (state, action) => {
+      state.status = "pending";
+    });
+    builder.addCase(filterGenre.fulfilled, (state, action) => {
+      state.library=action.payload.data;
+      state.status = "success";
+    });
+    builder.addCase(filterGenre.rejected, (state, action) => {
         state.status = "rejected";
     });
   },
